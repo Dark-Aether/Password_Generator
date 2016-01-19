@@ -1,12 +1,11 @@
 /**
  * \file main.c
- * \brief Générateur de mots de passe aléatoires
+ * \brief Random password generator
  * \author Florian Bouchalois
  * \version 1.0
  * \date 19/01/2016
  * 
- * Programme permettant de générer aléatoirement des mots de passe en 
- * fonction des paramètres passé au lancement du programme. 
+ * Allow to create random password according to the parameters passed at launch 
  * 
  * */
 
@@ -16,22 +15,21 @@
 #include <string.h>
 #include <time.h>
 
-#define N 5
 
 /**
  * \fn int main(int argc, char* argv[])
  * 
- * \param argc Nombre d'argument lors l'execution du programme
- * \param argv Tableau contenant les parametres passé lors de l'éxécution (le parametre 0 est le nom du programme)
+ * \param argc Number of parameters at launch
+ * \param argv Array containing the parameters
  * */
 int main(int argc, char* argv[]){
 		
-	int nbCaractere = -1;
-	int alea;
+	int passwdSize = -1;
+	int randomNumber;
 	int i;
-	char* mdp;
-	int tailleTab = 0;
-	char TAB[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 
+	char* password;
+	int arrayLength = 0;
+	char array[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 
 		'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B',
 		'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
 		'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '1', '2', '3', '4', '5', '6', 
@@ -39,41 +37,41 @@ int main(int argc, char* argv[]){
 		'@', ')', '*', '#'};
 	
 	srand(time(0));
-	tailleTab = strlen(TAB);
+	arrayLength = strlen(array);
 
-	/* Test qui permet de définir le nombre de caractères du mot de passe */
+	/* Test which allow to choose the size of the password */
 	if(argc < 2){
-		nbCaractere = 12;
+		passwdSize = 12;
 	} else {
-		nbCaractere = atoi(argv[1]);
-		if(nbCaractere <= 0){
-			printf("L'arguement doit être un nombre ou supérieur à 0! \n");
+		passwdSize = atoi(argv[1]);
+		if(passwdSize <= 0){
+			printf("The parameter must be a number or greater than 0! \n");
 			exit(0);
 		} else {
-			if(nbCaractere < 0 || nbCaractere > 60) 
+			if(passwdSize < 0 || passwdSize > 60) 
 			{
-				nbCaractere = 16;
+				passwdSize = 12;
 			}
 		}
 	}
 	
-	/* Allocation de la mémoire de TAB */
-	mdp = (char*)malloc(nbCaractere * sizeof(char));
+	/* Memory allocation of the password array */
+	password = (char*)malloc(passwdSize * sizeof(char));
 		
-	/* Remplissage du tableau mot de passe avec un caractere aléatoire de TAB */
-	for(i = 0; i < nbCaractere; ++i){
-		alea = rand()%tailleTab;
-		mdp[i] = TAB[alea];
+	/* Fill the password array with the random caracter */
+	for(i = 0; i < passwdSize; ++i){
+		randomNumber = rand()%arrayLength;
+		password[i] = array[randomNumber];
 	}
 	
-	/* Affichage du mot de passe */
-	for (i = 0; i < nbCaractere; i++)
+	/* Print the password */
+	for (i = 0; i < passwdSize; i++)
 	{
-		printf("%c",mdp[i]);
+		printf("%c",password[i]);
 	}
 	printf("\n");
 	
 	
-	free(mdp);
+	free(password);
 	return 0;
 }
