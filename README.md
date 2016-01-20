@@ -11,7 +11,7 @@ Use
 
 ./GenPasswd [Password size]
 
-By default, if there is no argument, the size of the password is 12
+By default, if there is no parameters, the size of the password is 12
 
 Examples
 --------
