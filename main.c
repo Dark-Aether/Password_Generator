@@ -48,7 +48,7 @@ int main(int argc, char* argv[]){
 			printf("The parameter must be a number or greater than 0! \n");
 			exit(0);
 		} else {
-			if(passwdSize < 0 || passwdSize > 60) 
+			if(passwdSize > 128) 
 			{
 				passwdSize = 12;
 			}
