@@ -2,7 +2,7 @@ language: c
 sudo: false
 compiler: gcc
 script: 
-- make 
+- make test 
 - ./build/GenPasswd
 - gcov src/main.c
 
