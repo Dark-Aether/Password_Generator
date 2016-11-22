@@ -5,6 +5,9 @@ FILES= src/main.c
 EXEC=build/GenPasswd
 
 all:
+	$(CC) $(FILES) $(CFLAGS) $(EXEC)
+
+test:
 	$(CC) $(BFLAGS) $(FILES) $(CFLAGS) $(EXEC)
 
 clean:
