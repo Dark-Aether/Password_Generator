@@ -1,7 +1,7 @@
 language: c
 compiler: gcc
 script: 
-	- make 
-	- ./GenPasswd
-	- ./GenPasswd 123456789012
-	- ./GenPasswd 0 1 2
+- make 
+- ./GenPasswd
+- ./GenPasswd 123456789012
+- ./GenPasswd 0 1 2
