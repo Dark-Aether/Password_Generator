@@ -1,7 +1,7 @@
 Readme
 ======
 [![Build Status](https://travis-ci.org/Dark-Aether/Password_Generator.svg?branch=master)](https://travis-ci.org/Dark-Aether/Password_Generator)
-
+[![codecov](https://codecov.io/gh/Dark-Aether/Password_Generator/branch/master/graph/badge.svg)](https://codecov.io/gh/Dark-Aether/Password_Generator)
 
 Use
 ---
