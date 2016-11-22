@@ -5,3 +5,5 @@ script:
 - ./build/GenPasswd
 - ./build/GenPasswd 123456789012
 - ./build/GenPasswd 0 1 2
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
