@@ -1,9 +1,10 @@
 language: c
+sudo: false
 compiler: gcc
 script: 
 - make 
 - ./build/GenPasswd
-- ./build/GenPasswd 123456789012
-- ./build/GenPasswd 0 1 2
+- gcov src/main.c
+
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+- bash <(curl -s https://codecov.io/bash)
