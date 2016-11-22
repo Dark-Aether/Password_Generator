@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-ansi -pedantic -Wall -Wextra -o
-FILES= main.c
+FILES= src/main.c
 EXEC=GenPasswd
 
 all:
