@@ -1,15 +1,13 @@
 Readme
 ======
+[![Build Status](https://travis-ci.org/Dark-Aether/Password_Generator.svg?branch=master)](https://travis-ci.org/Dark-Aether/Password_Generator)
 
-Make
-----
-
-make all
 
 Use
 ---
 
-./GenPasswd [Password size]
+    make
+    ./GenPasswd [Password size]
 
 By default, if there is no parameters, the size of the password is 12
 
