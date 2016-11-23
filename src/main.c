@@ -22,7 +22,7 @@
  * \brief Print how to use the program
  */
 void print_usage(){
-	printf("Usage: GenPasswd [-s size] [-n number of password] \n");
+	printf("Usage: GenPasswd [-s size] [-n number of password] [-p minimum size] [-a maximum size]\n");
 } 
 
 /**
@@ -38,6 +38,7 @@ int main(int argc, char* argv[]){
 	int passwdSize = 24;
 	int randomNumber;
 	int i,j;
+	int min = -1, max = -1;
 	int option = 0;
 	int numberOfPassword = 1;
 	char* password;
@@ -48,15 +49,12 @@ int main(int argc, char* argv[]){
 		'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '1', '2', '3', '4', '5', '6', 
 		'7', '8', '9', '0', ',', '?', ';', '.', ':', '/', '!', '&', '(', '-', '_', 
 		'@', ')', '*', '#'};
-	
+
 	srand(time(0));
 	arrayLength = strlen(array);
-/*
-	option = getopt(argc, argv, "s:n:");
-	printf("%d\n", option);
-*/	
+
 	/* Get the arguments from the command line */
-	while( (option = getopt(argc, argv, "s:n:")) != -1){
+	while( (option = getopt(argc, argv, "s:n:a:p:")) != -1){
 		switch (option) {
 			case 's':
 				passwdSize = atoi(optarg);
@@ -64,22 +62,47 @@ int main(int argc, char* argv[]){
 			case 'n':
 				numberOfPassword = atoi(optarg);
 				break;
-			default:
+			case 'p':
+				min = atoi(optarg);
+				break;
+			case 'a':
+				max = atoi(optarg);
+				break;
+			case '?':
 				print_usage();
 				exit(EXIT_FAILURE);
 		}
 	}
 
+	/*Test if password in correct range*/
+	if (passwdSize <= 0)
+	{
+		passwdSize = 24;
+	} else {
+		if (passwdSize > 1024)
+		{
+			passwdSize = 1024;
+		}
+	}
+
 	for (j = 0; j < numberOfPassword; ++j)
 	{
-		if (passwdSize <= 0)
+		/*Test if min and max available*/
+		if (min != -1)
 		{
-			passwdSize = 24;/*
-			printf("Password size set to 24 by default !\n");*/
-		} else {
-			if (passwdSize > 1024)
+			if (max != -1 && min < max)
 			{
-				passwdSize = 1024;
+				passwdSize = rand()%(max - min);
+				passwdSize += min;
+			} else {
+				passwdSize = rand()%(128-min);
+				passwdSize += min;
+			}
+		} else {
+			if (max != -1)
+			{
+				passwdSize = rand()%(max-24);
+				passwdSize += 24;
 			}
 		}
 
