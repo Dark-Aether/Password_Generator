@@ -3,7 +3,7 @@ sudo: false
 compiler: gcc
 script: 
 - make test 
-- ./build/GenPasswd
+- ./build/GenPasswd 32
 - gcov src/main.c
 
 after_success:
