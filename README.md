@@ -7,7 +7,7 @@ Use
 ---
 
     make
-    ./build/GenPasswd [-s size] [-n number of password]
+    ./build/GenPasswd [-s size] [-n number of password] [-p minimum size] [-a maximum size]
 
 By default, if there is no parameters, the size of the password is 24
 
@@ -27,6 +27,16 @@ Examples
     $ ./build/GenPasswd -s 32
     /b?zUB(Itu-:p560e;YFm(gzT5SfL4m4
 
-    ./build/GenPasswd -n 2 -s 32 
+    $ ./build/GenPasswd -n 2 -s 32 
     @qbF@!ToD/9aFx4sSWD5:3R&)KSqcELz
     )M5tCZHhPRhw/,&09uN#ye!u!I;(oxTk
+
+    $ ./build/GenPasswd -p 10 -a 30  
+    33@-_6gR45Ij2638Qmh9,c@,)4
+
+    $ ./build/GenPasswd -p 10 -a 30 -n 5
+    hLRoz?N8J/@t.:NzZsEG
+    S#*#)RP0AFyi#?3CycRb?18RuU8fI
+    5*57?G_u*21.
+    y?9/Cf(6Tr6h391
+    -6,IA*/8T:b_03z08

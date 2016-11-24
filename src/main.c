@@ -36,22 +36,14 @@ void print_usage(){
 int main(int argc, char* argv[]){
 		
 	int passwdSize = 24;
-	int randomNumber;
 	int i,j;
 	int min = -1, max = -1;
 	int option = 0;
 	int numberOfPassword = 1;
 	char* password;
-	int arrayLength = 0;
-	char array[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 
-		'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B',
-		'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
-		'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '1', '2', '3', '4', '5', '6', 
-		'7', '8', '9', '0', ',', '?', ';', '.', ':', '/', '!', '&', '(', '-', '_', 
-		'@', ')', '*', '#'};
-
+	char array[] = ",?;.:/!&(-_@)*#";
+	
 	srand(time(0));
-	arrayLength = strlen(array);
 
 	/* Get the arguments from the command line */
 	while( (option = getopt(argc, argv, "s:n:a:p:")) != -1){
@@ -108,10 +100,15 @@ int main(int argc, char* argv[]){
 
 		password = (char*)malloc(passwdSize * sizeof(char));
 		
-		/* Fill the password array with the random caracter */
+		/* Fill the password array with the random character */
 		for(i = 0; i < passwdSize; ++i){
-			randomNumber = rand()%arrayLength;
-			password[i] = array[randomNumber];
+			char *v = password+i;
+			switch(rand()&3) {
+				case 0:	*v = 'A'+(rand()%26);	break;
+				case 1: *v = 'a'+(rand()%26);	break;
+				case 2:	*v = '0'+(rand()%10);	break;
+				case 3:	*v = array[rand()%strlen(array)];
+			}
 		}
 		
 		/* Print the password */
