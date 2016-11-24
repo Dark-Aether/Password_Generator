@@ -3,7 +3,7 @@ sudo: false
 compiler: gcc
 script: 
 - make test 
-- valgrind ./build/GenPasswd -n 4000000000
+- ./build/GenPasswd -n 4000000000
 - gcov src/main.c
 
 after_success:
