@@ -41,7 +41,7 @@ int main(int argc, char* argv[]){
 	int option = 0;
 	int numberOfPassword = 1;
 	char* password;
-	char array[] = ",?;.:/!&(-_@)*#";
+	char array[] = ",?;.:/!&(-_@)*#[]=+<>";
 	
 	srand(time(0));
 
