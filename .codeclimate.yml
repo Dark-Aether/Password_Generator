@@ -1,3 +1,10 @@
+---
+engines:
+  fixme:
+    enabled: true
+ratings:
+  paths: []
+exclude_paths: []
 C: true
 
 exclude_paths:
