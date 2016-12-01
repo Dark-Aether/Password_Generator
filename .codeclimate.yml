@@ -1,0 +1,4 @@
+C: true
+
+exclude_paths:
+- build/*

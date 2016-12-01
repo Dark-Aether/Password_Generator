@@ -46,8 +46,10 @@ int main(int argc, char* argv[]){
 	srand(time(0));
 
 	/* Get the arguments from the command line */
-	while( (option = getopt(argc, argv, "s:n:a:p:")) != -1){
-		switch (option) {
+	while( (option = getopt(argc, argv, "s:n:a:p:")) != -1)
+	{
+		switch (option) 
+		{
 			case 's':
 				passwdSize = atoi(optarg);
 				break;
@@ -70,7 +72,9 @@ int main(int argc, char* argv[]){
 	if (passwdSize <= 0)
 	{
 		passwdSize = 24;
-	} else {
+	} 
+	else 
+	{
 		if (passwdSize > 1024)
 		{
 			passwdSize = 1024;
@@ -86,11 +90,15 @@ int main(int argc, char* argv[]){
 			{
 				passwdSize = rand()%(max - min);
 				passwdSize += min;
-			} else {
+			} 
+			else 
+			{
 				passwdSize = rand()%(128-min);
 				passwdSize += min;
 			}
-		} else {
+		} 
+		else 
+		{
 			if (max != -1)
 			{
 				passwdSize = rand()%(max-24);
@@ -101,9 +109,11 @@ int main(int argc, char* argv[]){
 		password = (char*)malloc(passwdSize * sizeof(char));
 		
 		/* Fill the password array with the random character */
-		for(i = 0; i < passwdSize; ++i){
+		for(i = 0; i < passwdSize; ++i)
+		{
 			char *v = password+i;
-			switch(rand()&3) {
+			switch(rand()&3) 
+			{
 				case 0:	*v = 'A'+(rand()%26);	break;
 				case 1: *v = 'a'+(rand()%26);	break;
 				case 2:	*v = '0'+(rand()%10);	break;
